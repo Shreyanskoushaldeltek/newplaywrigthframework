@@ -4,6 +4,7 @@ import { ResultPage } from '../pages/resultpage';
 import { PlaylistPage } from '../pages/playlistpage';
 import { qaTestData } from "../test-data/qa/google.json";
 import { stageTestData } from "../test-data/stage/google.json";
+import { BasePage } from '../utils/BasePage';
 
 let testData: any;
 
@@ -21,6 +22,7 @@ test('UI automation test using playwright', async ({ page }) => {
     const homepage = new HomePage(page);
     const resultpage = new ResultPage(page);
     const playlistpage = new PlaylistPage(page);
+    const base = new BasePage(page);
 
     await test.step('Go to URL', async () => {
         await homepage.goto();

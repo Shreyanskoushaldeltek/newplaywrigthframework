@@ -1,0 +1,53 @@
+[
+  {
+    "description": "",
+    "elements": [
+      {
+        "description": "",
+        "id": "login-functionality;invalid-login-should-show-error",
+        "keyword": "Scenario",
+        "line": 4,
+        "name": "Invalid login should show error",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 435279600
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 5,
+            "name": "I navigate to the login page",
+            "match": {
+              "location": "steps\\login.steps.ts:8"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1462790899
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 16328400
+            }
+          }
+        ],
+        "tags": [],
+        "type": "scenario"
+      }
+    ],
+    "id": "login-functionality",
+    "line": 2,
+    "keyword": "Feature",
+    "name": "Login Functionality",
+    "tags": [],
+    "uri": "features\\login.feature"
+  }
+]

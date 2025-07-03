@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "strict": true,
+    "allowJs": true,
+    "checkJs": false,
+    "esModuleInterop": true,
+    "outDir": "dist",
+    "rootDir": ".",
+    "types": ["node"]
+  },
+  "include": ["tests/**/*.ts", "steps/**/*.ts", "pages/**/*.ts"]
+}

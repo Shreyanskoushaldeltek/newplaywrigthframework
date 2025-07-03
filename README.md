@@ -30,6 +30,35 @@ Playwright will download the browsers needed as well as create the following fil
 #### luxon plugin for custom dates
 - npm install --save luxon
 
+#### Java setup
+https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html - Navigate here
+https://download.oracle.com/java/17/archive/jdk-17.0.12_windows-x64_bin.exe (sha256 ) - Install this
+
+
+🔧 Step 2: Set JAVA_HOME and Update PATH
+After installation, set environment variables:
+
+Press Win + S → Search for "Environment Variables" → Open it
+
+Under System Variables:
+
+Click New:
+
+Name: JAVA_HOME
+
+Value: Path to your JDK (e.g., C:\Program Files\Eclipse Adoptium\jdk-17\)
+
+Find and Edit the Path variable:
+
+Add: %JAVA_HOME%\bin
+
+Click OK → OK → OK to save everything.
+
+✅ Step 3: Verify Java Installation
+Open Command Prompt and run:
+
+java -version
+
 ## Playwright Important Commands
 
   npx playwright install
@@ -39,6 +68,7 @@ Playwright will download the browsers needed as well as create the following fil
    - Runs the end-to-end tests.
 
   npx playwright test --ui
+  npx playwright test --headed
    - Starts the interactive UI mode.
 
   npx playwright test --project=chromium
