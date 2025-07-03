@@ -15,7 +15,7 @@ test.beforeAll('Running before all tests', () => {
         testData = stageTestData;
     }
 })
-
+ 
 // Write a test
 test('UI automation test using playwright', async ({ page }) => {
 
