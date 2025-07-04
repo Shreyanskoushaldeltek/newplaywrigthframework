@@ -1,0 +1,27 @@
+{
+  "partData": {
+    "partId": "STAGE_1234PARt",
+    "description": "Stage_Part_Description_1234",
+    "unitOfMeasure": "EA",
+    "comments": "Stage Environment Part Test"
+  },
+  "characteristics": {
+    "partType": "Tool",
+    "makeBuy": "Make",
+    "active": true,
+    "subcontractorType": "Expense",
+    "asRequired": true,
+    "hazmat": false,
+    "qcRequired": true,
+    "sourceInspection": false,
+    "certOfConformance": true,
+    "vendorRestriction": "Assigned"
+  },
+  "serialLotInfo": {
+    "lotRequired": true,
+    "soConfigLotRequired": false
+  },
+  "queryTest": {
+    "testValue": "STAGE_1234"
+  }
+}
