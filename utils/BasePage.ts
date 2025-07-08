@@ -70,4 +70,30 @@ export class BasePage {
     const element = typeof selector === 'string' ? this.page.locator(selector) : selector;
     return await element.getAttribute(attr);
   }
+
+  /** Generate random value with prefix and suffix */
+  async generateRandomValue(
+    totalLength: number,
+    prefix: string = '',
+    suffix: string = ''
+  ): Promise<string> {
+    try {
+      const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+      const fixedLength = prefix.length + suffix.length;
+      const randomLength = Math.max(totalLength - fixedLength, 0);
+      if (randomLength <= 0) {
+        throw new Error('Total length must be greater than prefix + suffix length');
+      }
+      let randomPart = '';
+      for (let i = 0; i < randomLength; i++) {
+        randomPart += chars.charAt(Math.floor(Math.random() * chars.length));
+      }
+      const result = prefix + randomPart + suffix;
+      console.log(`✅ Generated random value: ${result}`);
+      return result;
+    } catch (error) {
+      console.error('❌ Failed to generate random value:', error);
+      throw error;
+    }
+  }
 }

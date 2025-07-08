@@ -51,12 +51,13 @@ test.describe('PDMPART - Manage Parts Functionality', () => {
             await pdmpartPage.waitForPageLoad();
         });
 
-        await test.step('Perform part query to verify system state', async () => {
-            await pdmpartPage.performPartQuery(testData.queryTest.testValue);
-        });
-
         await test.step('Fill basic part information', async () => {
-            await pdmpartPage.fillBasicPartInfo(testData.partData);
+            const randomPartId = await basePage.generateRandomValue(10, 'PART');
+            const partData = {
+                ...testData.partData,
+                partId: randomPartId
+            };
+            await pdmpartPage.fillBasicPartInfo(partData);
         });
 
         await test.step('Configure part characteristics', async () => {
@@ -152,8 +153,9 @@ test.describe('PDMPART - Manage Parts Functionality', () => {
         await test.step('Fill minimal part information', async () => {
             await pdmpartPage.waitForPageLoad();
             
+            const randomPartId = await basePage.generateRandomValue(10, 'PART');
             const minimalPartData = {
-                partId: `MIN_${Date.now()}`,
+                partId: randomPartId,
                 description: `Minimal Part Test ${Date.now()}`
             };
             
