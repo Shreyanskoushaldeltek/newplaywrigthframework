@@ -1,0 +1,48 @@
+locator.waitFor: Test timeout of 30000ms exceeded.
+Call log:
+  - waiting for locator('//div[text()=\'Improve User Experience\']') to be visible
+
+    at HomePage.ManageNotification (C:\Users\shreyanskoushal\Playwright-TypeScript-Framework-main07012024\pages\homepage.js:26:50)
+    at C:\Users\shreyanskoushal\Playwright-TypeScript-Framework-main07012024\e2e\PDMPART.spec.ts:20:5 {
+  [Symbol(step)]: {
+    stepId: 'pw:api@17',
+    location: {
+      file: 'C:\\Users\\shreyanskoushal\\Playwright-TypeScript-Framework-main07012024\\pages\\homepage.js',
+      line: 26,
+      column: 50,
+      function: 'HomePage.ManageNotification'
+    },
+    category: 'pw:api',
+    title: "Wait for selector locator('//div[text()=\\'Improve User Experience\\']')",
+    apiName: 'locator.waitFor',
+    params: {
+      selector: "//div[text()='Improve User Experience']",
+      strict: true,
+      omitReturnValue: true,
+      state: 'visible',
+      timeout: 0
+    },
+    boxedStack: undefined,
+    steps: [],
+    attachmentIndices: [],
+    info: TestStepInfoImpl {
+      annotations: [],
+      _testInfo: [TestInfoImpl],
+      _stepId: 'pw:api@17'
+    },
+    complete: [Function: complete],
+    endWallTime: 1752174132103,
+    error: {
+      message: 'Error: locator.waitFor: Test timeout of 30000ms exceeded.\n' +
+        'Call log:\n' +
+        "\x1B[2m  - waiting for locator('//div[text()=\\'Improve User Experience\\']') to be visible\x1B[22m\n",
+      stack: 'Error: locator.waitFor: Test timeout of 30000ms exceeded.\n' +
+        'Call log:\n' +
+        "\x1B[2m  - waiting for locator('//div[text()=\\'Improve User Experience\\']') to be visible\x1B[22m\n" +
+        '\n' +
+        '    at HomePage.ManageNotification (C:\\Users\\shreyanskoushal\\Playwright-TypeScript-Framework-main07012024\\pages\\homepage.js:26:50)\n' +
+        '    at C:\\Users\\shreyanskoushal\\Playwright-TypeScript-Framework-main07012024\\e2e\\PDMPART.spec.ts:20:5',
+      cause: undefined
+    }
+  }
+}
