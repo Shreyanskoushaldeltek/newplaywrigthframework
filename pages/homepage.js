@@ -20,7 +20,7 @@
 const { expect } = require('@playwright/test');
 import BasePage from '../utils/BasePage';
 
-class HomePage extends BasePage {
+export class HomePage extends BasePage {
   constructor(page) {
     super(page);
 
