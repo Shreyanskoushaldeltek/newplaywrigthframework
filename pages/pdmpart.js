@@ -1,23 +1,28 @@
-import { Page, Locator, expect } from '@playwright/test';
+// import { Page, Locator, expect } from '@playwright/test';
+// import BasePage from '../utils/BasePage';
+
+// export class PDMPART extends BasePage {
+//   readonly page: Page;
+//   readonly partId: Locator;
+//   readonly partdesc: Locator;
+//   readonly defaultUMInput: Locator;
+//   readonly partTypeIcon: Locator;
+//   readonly makeBuyIcon: Locator;
+//   readonly activeCheckbox: Locator;
+//   readonly hazmatCheckbox : Locator;
+//   readonly subChangeTypeDropdown : Locator;
+//   readonly   qcRequiredCheckbox: Locator;
+//   readonly  SerialLotInformation: Locator;
+//   readonly  lotRequiredCheckbox: Locator;
+//   readonly  saveContinueButton: Locator;
+//   readonly  resultMessage: Locator;
+
+//   constructor(page: Page) {
+const { expect } = require('@playwright/test');
 import BasePage from '../utils/BasePage';
 
 export class PDMPART extends BasePage {
-  readonly page: Page;
-  readonly partId: Locator;
-  readonly partdesc: Locator;
-  readonly defaultUMInput: Locator;
-  readonly partTypeIcon: Locator;
-  readonly makeBuyIcon: Locator;
-  readonly activeCheckbox: Locator;
-  readonly hazmatCheckbox : Locator;
-  readonly subChangeTypeDropdown : Locator;
-  readonly   qcRequiredCheckbox: Locator;
-  readonly  SerialLotInformation: Locator;
-  readonly  lotRequiredCheckbox: Locator;
-  readonly  saveContinueButton: Locator;
-  readonly  resultMessage: Locator;
-
-  constructor(page: Page) {
+  constructor(page) {
     super(page);
     this.page = page;
         // Elements
@@ -38,8 +43,8 @@ export class PDMPART extends BasePage {
     }
     async FillDetails(){
         const runValue= this.generateRandomString(6);
-        const partID= runValue + process.env.PartID!
-        const partDesc= runValue + process.env.PartDesc!
+        const partID= runValue + process.env.PartID
+        const partDesc= runValue + process.env.PartDesc
         await this.partId.waitFor({ state: 'visible' , timeout: 5000});
         //await this.partId.fill(process.env.PartID!);
         await this.partId.fill(partID);
@@ -47,26 +52,26 @@ export class PDMPART extends BasePage {
        // await this.partdesc.type(process.env.PartDesc!);
         await this.partdesc.type(partDesc);
         console.log(`the part id is ${process.env.PartDesc}`);
-        await this.defaultUMInput.fill(process.env.UMInput!);
+        await this.defaultUMInput.fill(process.env.UMInput);
         console.log(await this.makeBuyIcon.count()); // should be 1
         console.log(await this.makeBuyIcon.isVisible());// should be true
         await this.makeBuyIcon.hover();
         await this.makeBuyIcon.dblclick();
-        await this.page.getByText(process.env.MakeBuy!, { exact: true }).first().click();
+        await this.page.getByText(process.env.MakeBuy, { exact: true }).first().click();
        
         await this.partTypeIcon.hover();
         await this.partTypeIcon.click();
         await this.page.waitForTimeout(1000);
         await this.partTypeIcon.focus();
         await this.page.keyboard.press('Enter');
-        const location = await this.ExactXPathLocator(process.env.PartType!);
+        const location = await this.ExactXPathLocator(process.env.PartType);
         await location.first().click();
 
         await this.subChangeTypeDropdown.hover();
         await this.subChangeTypeDropdown.click();
         await this.page.waitForTimeout(1000);
         await this.subChangeTypeDropdown.focus();
-        const location2 = await this.ExactXPathLocator(process.env.SubpartType!);
+        const location2 = await this.ExactXPathLocator(process.env.SubpartType);
         await location2.first().click();
 
         const checkingState = await this.activeCheckbox.isChecked();

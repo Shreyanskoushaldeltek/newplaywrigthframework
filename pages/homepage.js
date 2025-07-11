@@ -1,23 +1,31 @@
-// Inlcude playwright module
+// // Inlcude playwright module
 
-const { expect } = require('@playwright/test')
-import { Page } from '@playwright/test';
-import BasePage from '../utils/BasePage';
-// create class
-export class HomePage extends BasePage{
-    searchTextbox: any;
-    Notification: any;
-    MaybeLater: any;
-    ImproveUserExperience: any;
-    Search: any;
+// const { expect } = require('@playwright/test')
+// import { Page } from '@playwright/test';
+// import BasePage from '../utils/BasePage';
+// // create class
+// export class HomePage extends BasePage{
+//     searchTextbox: any;
+//     Notification: any;
+//     MaybeLater: any;
+//     ImproveUserExperience: any;
+//     Search: any;
 
-    /**
-     * 
-     * @param {import ('@playwright/test').Page} page 
-     */
-    constructor(page: Page){
+//     /**
+//      * 
+//      * @param {import ('@playwright/test').Page} page 
+ //   constructor(page: Page){
         // Init page object
-        super(page);
+
+const { expect } = require('@playwright/test');
+import BasePage from '../utils/BasePage';
+
+class HomePage extends BasePage {
+  constructor(page) {
+    super(page);
+
+    // Page instance
+    this.page = page;
         // Elements
         this.searchTextbox = page.locator('#APjFqb');
         this.Notification = page.locator("//div[text()='Allow Notifications?']");
@@ -34,11 +42,13 @@ export class HomePage extends BasePage{
                 await this.MaybeLater.click();
            }
            catch(error){
-                console.log((error as Error).message);
+              //  console.log((error as Error).message);
+              console.log(error)
            }
     }
 
-    async searchKeywords(param1: string){
+    //async searchKeywords(param1: string){
+    async searchKeywords(param1){
         console.log("searching the app")
         await this.Search.click();
         await this.Search.fill(param1);
@@ -47,3 +57,4 @@ export class HomePage extends BasePage{
     }
 
 }
+module.exports = { HomePage };

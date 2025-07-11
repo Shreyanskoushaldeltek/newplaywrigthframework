@@ -1,19 +1,24 @@
-import { Page,expect } from '@playwright/test';
+// import { Page,expect } from '@playwright/test';
 
-// create class
-export class LoginPage{
-    Username: any;
-    EnterPassword: any;
-    Password: any;
-    LoginButton: any;
-    page: Page;
+// // create class
+// export class LoginPage{
+//     Username: any;
+//     EnterPassword: any;
+//     Password: any;
+//     LoginButton: any;
+//     page: Page;
 
-    /**
-     * 
+//     /**
+//      * 
     
-     */
-    constructor(page: Page){
+//      */
+//     constructor(page: Page){
         // Init page object
+
+const { expect } = require('@playwright/test');
+
+export class LoginPage {
+  constructor(page) {        
         this.page = page;
 
         // Elements
@@ -25,7 +30,7 @@ export class LoginPage{
 
     async goto(){
         await this.page.setViewportSize({width: 1720, height: 1080})
-        await this.page.goto(process.env.URL!);
+        await this.page.goto(process.env.URL);
     }
 
     async login(){
