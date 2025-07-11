@@ -1,6 +1,6 @@
 import { Page, Locator, expect } from '@playwright/test';
 
-export class BasePage {
+export default class BasePage {
   protected page: Page;
 
   constructor(page: Page) {
@@ -70,4 +70,22 @@ export class BasePage {
     const element = typeof selector === 'string' ? this.page.locator(selector) : selector;
     return await element.getAttribute(attr);
   }
+
+  async getDynamicXPathLocator(text: string) {
+  return this.page.locator(`//div[contains(text(),"${text}")]`);
+}
+  async ExactXPathLocator(text: string) {
+  return this.page.locator(`//div[text()="${text}"]`);
+}
+
+  generateRandomString(length: number): string {
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let result = '';
+    for (let i = 0; i < length; i++) {
+      const randomIndex = Math.floor(Math.random() * chars.length);
+      result += chars[randomIndex];
+    }
+    return result;
+  }
+
 }

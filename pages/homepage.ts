@@ -1,22 +1,29 @@
 // Inlcude playwright module
-const { expect } = require('@playwright/test')
 
+const { expect } = require('@playwright/test')
+import { Page } from '@playwright/test';
+import BasePage from '../utils/BasePage';
 // create class
-exports.HomePage = class HomePage {
+export class HomePage extends BasePage{
+    searchTextbox: any;
+    Notification: any;
+    MaybeLater: any;
+    ImproveUserExperience: any;
+    Search: any;
 
     /**
      * 
      * @param {import ('@playwright/test').Page} page 
      */
-    constructor(page){
+    constructor(page: Page){
         // Init page object
-        this.page = page;
-
+        super(page);
         // Elements
         this.searchTextbox = page.locator('#APjFqb');
         this.Notification = page.locator("//div[text()='Allow Notifications?']");
         this.MaybeLater = page.locator("#pdlgNo");
         this.ImproveUserExperience = page.locator("//div[text()='Improve User Experience']");
+        this.Search = page.locator("//input[@id='appFltrFld']");
     }
 
     async ManageNotification(){
@@ -27,15 +34,16 @@ exports.HomePage = class HomePage {
                 await this.MaybeLater.click();
            }
            catch(error){
-                console.log(error.message);
+                console.log((error as Error).message);
            }
     }
 
-    async searchKeywords(param1){
-        await expect(this.searchTextbox).toBeEnabled();
-        await this.searchTextbox.click();
-        await this.searchTextbox.fill(param1);
-        await this.searchTextbox.press('Enter');
+    async searchKeywords(param1: string){
+        console.log("searching the app")
+        await this.Search.click();
+        await this.Search.fill(param1);
+        const locator = await this.getDynamicXPathLocator(param1);
+        await locator.click();
     }
 
 }

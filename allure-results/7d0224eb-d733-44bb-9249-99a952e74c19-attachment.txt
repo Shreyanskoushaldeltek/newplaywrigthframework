@@ -1,0 +1,5 @@
+locator.waitFor: Test timeout of 30000ms exceeded.
+Call log:
+  - waiting for locator('//div[text()=\'Improve User Experience\']') to be visible
+
+searching the app
