@@ -26,7 +26,7 @@ export class HomePage extends BasePage {
 
     // Page instance
     this.page = page;
-        // Elements
+        // Elements//
         this.searchTextbox = page.locator('#APjFqb');
         this.Notification = page.locator("//div[text()='Allow Notifications?']");
         this.MaybeLater = page.locator("#pdlgNo");
