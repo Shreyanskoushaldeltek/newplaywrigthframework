@@ -10,6 +10,7 @@ export class HomePage extends BasePage{
     MaybeLater: any;
     ImproveUserExperience: any;
     Search: any;
+    MenuButton: any;
 
     /**
      * 
@@ -24,6 +25,7 @@ export class HomePage extends BasePage{
         this.MaybeLater = page.locator("#pdlgNo");
         this.ImproveUserExperience = page.locator("//div[text()='Improve User Experience']");
         this.Search = page.locator("//input[@id='appFltrFld']");
+        this.MenuButton = page.locator("text=Menu");
     }
 
     async ManageNotification(){
@@ -44,6 +46,16 @@ export class HomePage extends BasePage{
         await this.Search.fill(param1);
         const locator = await this.getDynamicXPathLocator(param1);
         await locator.click();
+    }
+
+    async navigateToMenu(){
+        await this.MenuButton.click();
+        await this.page.waitForLoadState('networkidle');
+    }
+
+    async searchForPJMBASIC(){
+        await this.navigateToMenu();
+        await this.searchKeywords('PJMBASIC');
     }
 
 }
