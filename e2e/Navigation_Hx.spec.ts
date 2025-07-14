@@ -27,11 +27,11 @@ test('Login and navigation', async ({ page }) => {
     await test.step('Login to Costpoint', async () => {
       await loginPage.login();
       await page.waitForTimeout(20000);
-      await page.waitForSelector('text="Recent Activity"');
 
      // await homePage.ManageNotification();
   });
     await test.step('Select the Application', async () => {
+      await masterhx.waitForPageLoad();
       await masterhx.searchApplication_MenuSearch("PJMBASIC");
       await page.waitForTimeout(20000);
 

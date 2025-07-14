@@ -19,17 +19,17 @@ export class masterPage_Hx extends BasePage {
         this.Search = page.locator("//span[text()='Menu Search']");
         this.SearchBox = page.getByRole('textbox', { name: 'Search...' })
         this.SearchResult = page.locator('xpath=//*[@class="uxxAppMenuList" and contains(., "PJMBASIC")]');
-        this.recentActivityHeader = page.locator('#uxxAppHist').getByText('Recent Activity');
+        this.recentActivityHeader = page.locator('#uxxappHist').getByText('Recent Activity');
 
     }
 
      async waitForPageLoad() {
         // Wait for page to stabilize after login with extended timeout
-        await this.page.waitForTimeout(20000);
+        await page.waitForTimeout(10000);
         
         // Check for Recent Activity with extended timeout
-        await this.page.waitForSelector('text="Recent Activity"');        // Additional wait to ensure page is fully loaded
-        await this.page.waitForTimeout(15000);
+        await expect(this.recentActivityHeader).toBeVisible({ timeout: 15000 });
+        await page.waitForTimeout(5000);
     }
 
     //async searchKeywords(param1: string){
