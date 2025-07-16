@@ -88,4 +88,74 @@ export default class BasePage {
     return result;
   }
 
+  /** Wait for element to be stable (no movement) before interaction */
+  async waitForStable(selector: string | Locator, timeout: number = 5000): Promise<void> {
+    const element = typeof selector === 'string' ? this.page.locator(selector) : selector;
+    await element.waitFor({ state: 'attached', timeout });
+    await this.page.waitForTimeout(500); // Brief pause for stability
+  }
+
+  /** Retry mechanism for flaky actions */
+  async retryAction(action: () => Promise<void>, maxRetries: number = 3): Promise<void> {
+    for (let i = 0; i < maxRetries; i++) {
+      try {
+        await action();
+        return;
+      } catch (error) {
+        if (i === maxRetries - 1) throw error;
+        console.log(`Retrying action (attempt ${i + 1}/${maxRetries})`);
+        await this.page.waitForTimeout(1000);
+      }
+    }
+  }
+
+  /** Enhanced dropdown selection with retry logic */
+  async selectFromDropdownWithRetry(dropdown: Locator, value: string, maxRetries: number = 3): Promise<void> {
+    await this.retryAction(async () => {
+      await dropdown.hover();
+      await dropdown.click();
+      await this.page.waitForTimeout(1000);
+      await dropdown.focus();
+      await this.page.keyboard.press('Enter');
+      
+      const option = await this.ExactXPathLocator(value);
+      await option.first().click();
+    }, maxRetries);
+  }
+
+  /** Safe checkbox interaction with state verification */
+  async setCheckboxStateSafe(checkbox: Locator, expectedState: boolean): Promise<void> {
+    await this.retryAction(async () => {
+      const currentState = await checkbox.isChecked();
+      
+      if (currentState !== expectedState) {
+        if (expectedState) {
+          await checkbox.check();
+        } else {
+          await checkbox.uncheck();
+        }
+        
+        // Verify state changed
+        const newState = await checkbox.isChecked();
+        if (newState !== expectedState) {
+          throw new Error(`Checkbox state not changed as expected. Expected: ${expectedState}, Actual: ${newState}`);
+        }
+      }
+    });
+  }
+
+  /** Enhanced fill with clear and validation */
+  async fillWithValidation(selector: string | Locator, value: string): Promise<void> {
+    const element = typeof selector === 'string' ? this.page.locator(selector) : selector;
+    await element.waitFor({ state: 'attached' });
+    await element.clear();
+    await element.fill(value);
+    
+    // Verify value was set correctly
+    const actualValue = await element.inputValue();
+    if (actualValue !== value) {
+      throw new Error(`Value not set correctly. Expected: '${value}', Actual: '${actualValue}'`);
+    }
+  }
+
 }

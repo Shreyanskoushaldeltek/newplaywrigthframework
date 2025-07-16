@@ -1,0 +1,23 @@
+{
+  "basicInfo": {
+    "projectId": "STGPROJ001",
+    "projectName": "Stage Test Project",
+    "description": "Stage Test Project Description for Automation",
+    "projectType": "External",
+    "projectStatus": "Planning",
+    "projectManager": "StageManager",
+    "startDate": "02/01/2024",
+    "endDate": "11/30/2024",
+    "budgetAmount": "75000",
+    "customerCode": "STAGECUST001"
+  },
+  "characteristics": {
+    "active": true,
+    "billing": false,
+    "timesheet": true
+  },
+  "validationData": {
+    "expectedSuccessMessage": "Record modifications successfully completed.",
+    "expectedPageTitle": "Project Basic Information"
+  }
+}

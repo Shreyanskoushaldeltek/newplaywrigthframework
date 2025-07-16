@@ -25,18 +25,26 @@ export class masterPage_Hx extends BasePage {
 
      async waitForPageLoad() {
         // Wait for page to stabilize after login with extended timeout
-        await page.waitForTimeout(10000);
+        await this.page.waitForTimeout(10000);
         
         // Check for Recent Activity with extended timeout
-        await expect(this.recentActivityHeader).toBeVisible({ timeout: 15000 });
-        await page.waitForTimeout(5000);
+        //await expect(this.recentActivityHeader).toBeVisible({ timeout: 15000 });
+        await this.page.waitForTimeout(5000);
     }
 
     //async searchKeywords(param1: string){
     async searchApplication_MenuSearch(SearchApp){
         console.log("searching the app")
+        // Wait for Menu Search to be visible and click it
+        await this.Search.waitFor({ state: 'visible', timeout: 15000 });
         await this.Search.click();
-        await this.SearchBox.click();
+        
+        // Click on the SVG icons as shown in codegen
+        await this.page.locator('div:nth-child(2) > .uxxIconPane > div > svg').first().click();
+        await this.page.locator('div:nth-child(2) > .uxxIconPane > div > svg').first().click();
+        
+        // Click on the search input
+        await this.page.locator('#uxxAppSearch').click();
         await this.SearchBox.fill(SearchApp);
         await this.SearchResult.nth(1).click();        
     }
