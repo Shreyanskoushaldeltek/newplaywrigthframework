@@ -1,0 +1,51 @@
+locator.waitFor: Test timeout of 30000ms exceeded.
+Call log:
+  - waiting for locator('//div[text()=\'Allow Notifications?\']') to be visible
+
+    at HomePage.ManageNotification (C:\Users\shreyanskoushal\Playwright-TypeScript-Framework-main07012024\pages\homepage.js:39:41)
+    at C:\Users\shreyanskoushal\Playwright-TypeScript-Framework-main07012024\e2e\pdmpart.spec.ts:28:22
+    at C:\Users\shreyanskoushal\Playwright-TypeScript-Framework-main07012024\e2e\pdmpart.spec.ts:26:5 {
+  [Symbol(step)]: {
+    stepId: 'pw:api@16',
+    location: {
+      file: 'C:\\Users\\shreyanskoushal\\Playwright-TypeScript-Framework-main07012024\\pages\\homepage.js',
+      line: 39,
+      column: 41,
+      function: 'HomePage.ManageNotification'
+    },
+    category: 'pw:api',
+    title: "Wait for selector locator('//div[text()=\\'Allow Notifications?\\']')",
+    apiName: 'locator.waitFor',
+    params: {
+      selector: "//div[text()='Allow Notifications?']",
+      strict: true,
+      omitReturnValue: true,
+      state: 'visible',
+      timeout: 0
+    },
+    boxedStack: undefined,
+    steps: [],
+    attachmentIndices: [],
+    info: TestStepInfoImpl {
+      annotations: [],
+      _testInfo: [TestInfoImpl],
+      _stepId: 'pw:api@16'
+    },
+    complete: [Function: complete],
+    endWallTime: 1752658187799,
+    error: {
+      message: 'Error: locator.waitFor: Test timeout of 30000ms exceeded.\n' +
+        'Call log:\n' +
+        "\x1B[2m  - waiting for locator('//div[text()=\\'Allow Notifications?\\']') to be visible\x1B[22m\n",
+      stack: 'Error: locator.waitFor: Test timeout of 30000ms exceeded.\n' +
+        'Call log:\n' +
+        "\x1B[2m  - waiting for locator('//div[text()=\\'Allow Notifications?\\']') to be visible\x1B[22m\n" +
+        '\n' +
+        '    at HomePage.ManageNotification (C:\\Users\\shreyanskoushal\\Playwright-TypeScript-Framework-main07012024\\pages\\homepage.js:39:41)\n' +
+        '    at C:\\Users\\shreyanskoushal\\Playwright-TypeScript-Framework-main07012024\\e2e\\pdmpart.spec.ts:28:22\n' +
+        '    at C:\\Users\\shreyanskoushal\\Playwright-TypeScript-Framework-main07012024\\e2e\\pdmpart.spec.ts:26:5',
+      cause: undefined
+    }
+  }
+}
+searching the app

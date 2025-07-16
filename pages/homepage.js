@@ -35,9 +35,9 @@ export class HomePage extends BasePage {
     }
 
     async ManageNotification(){
-           await this.Notification.waitFor({ state: 'visible' });
-           await this.MaybeLater.click();
            try{
+                await this.Notification.waitFor({ state: 'visible' });
+                await this.MaybeLater.click();
                 await this.ImproveUserExperience.waitFor({ state: 'visible' , timeout: 5000});
                 await this.MaybeLater.click();
            }

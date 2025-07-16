@@ -38,7 +38,8 @@ export class masterPage_Hx extends BasePage {
         await this.Search.click();
         await this.SearchBox.click();
         await this.SearchBox.fill(SearchApp);
-        await this.SearchResult.nth(1).click();        
+        const locator = await this.getDynamicXPathLocator(param1);
+        await locator.click();   
     }
 
 }
