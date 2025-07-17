@@ -28,7 +28,7 @@ test.describe('PJMBASIC - Project Basic Information Tests', () => {
     });
 
     await test.step('Navigate to PJMBASIC Application', async () => {
-      await masterPage.searchApplication_MenuSearch('PJMBASIC');
+      await masterPage.searchApplication_MenuSearch('Manage Project User Flow');
       await pjmBasicPage.verifyPageLoaded();
     });
 

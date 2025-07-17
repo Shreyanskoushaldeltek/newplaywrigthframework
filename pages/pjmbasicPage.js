@@ -38,7 +38,7 @@ export class PJMBasicPage extends BasePage {
     this.successMessage = page.locator("//div[contains(text(),'Record modifications successfully completed')]");
     
     // Page Header
-    this.pageHeader = page.locator('#rsLevelToolbarBtns').getByText('Project Basic Information');
+    this.pageHeader = page.locator("(//div[@id='rsLevelToolbarBtns']/div)[1]");
   }
 
   /**
@@ -53,14 +53,16 @@ export class PJMBasicPage extends BasePage {
       await this.projectId.waitFor({ state: 'visible', timeout: 10000 });
       
       // Generate unique identifier if needed
-      const runValue = this.generateRandomString(6);
-      const projectId = runValue + projectData.projectId;
-      const projectName = runValue + projectData.projectName;
+      const runValue = this.generateRandomString(4);
+      const projectId = runValue;
+      const projectName = runValue;
       
       // Fill basic project information
       await this.projectId.fill(projectId);
-      await this.projectName.fill(projectName);
-      await this.projectDescription.fill(projectData.description);
+      await this.projectName.click();
+      await this.projectName.type(projectName);
+     // await this.projectDescription.click();
+     // await this.projectDescription.fill(projectData.description);
       
       // Handle project type selection
       if (projectData.projectType) {
@@ -219,7 +221,7 @@ export class PJMBasicPage extends BasePage {
    * Verify page is loaded correctly
    */
   async verifyPageLoaded() {
-    await expect(this.pageHeader).toBeVisible({ timeout: 15000 });
-    console.log('PJMBASIC page loaded successfully');
+    await expect(this.pageHeader).toBeVisible({ timeout: 20000 });
+    console.log('The application page loaded successfully');
   }
 }

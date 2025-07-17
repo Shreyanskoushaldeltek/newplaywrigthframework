@@ -1,0 +1,34 @@
+Error filling project basic information: TypeError: this.waitFor is not a function
+    at PJMBasicPage.fillProjectBasicInfo (C:\Users\shreyanskoushal\Playwright-TypeScript-Framework-main07012024\pages\pjmbasicPage.js:64:18)
+    at PJMBasicPage.createProject (C:\Users\shreyanskoushal\Playwright-TypeScript-Framework-main07012024\pages\pjmbasicPage.js:206:7)
+    at C:\Users\shreyanskoushal\Playwright-TypeScript-Framework-main07012024\e2e\pjmbasic.spec.ts:36:7
+    at TestStepInfoImpl._runStepBody (C:\Users\shreyanskoushal\Playwright-TypeScript-Framework-main07012024\node_modules\playwright\lib\worker\testInfo.js:449:14)
+    at C:\Users\shreyanskoushal\Playwright-TypeScript-Framework-main07012024\node_modules\playwright\lib\common\testType.js:244:20
+    at C:\Users\shreyanskoushal\Playwright-TypeScript-Framework-main07012024\node_modules\playwright\lib\common\testType.js:242:18
+    at TestTypeImpl._step (C:\Users\shreyanskoushal\Playwright-TypeScript-Framework-main07012024\node_modules\playwright\lib\common\testType.js:239:12)
+    at C:\Users\shreyanskoushal\Playwright-TypeScript-Framework-main07012024\e2e\pjmbasic.spec.ts:35:5
+    at C:\Users\shreyanskoushal\Playwright-TypeScript-Framework-main07012024\node_modules\playwright\lib\worker\workerMain.js:304:9
+    at C:\Users\shreyanskoushal\Playwright-TypeScript-Framework-main07012024\node_modules\playwright\lib\worker\testInfo.js:284:11
+    at TimeoutManager.withRunnable (C:\Users\shreyanskoushal\Playwright-TypeScript-Framework-main07012024\node_modules\playwright\lib\worker\timeoutManager.js:67:14)
+    at TestInfoImpl._runWithTimeout (C:\Users\shreyanskoushal\Playwright-TypeScript-Framework-main07012024\node_modules\playwright\lib\worker\testInfo.js:282:7)
+    at C:\Users\shreyanskoushal\Playwright-TypeScript-Framework-main07012024\node_modules\playwright\lib\worker\workerMain.js:302:7
+    at WorkerMain._runTest (C:\Users\shreyanskoushal\Playwright-TypeScript-Framework-main07012024\node_modules\playwright\lib\worker\workerMain.js:277:5)
+    at WorkerMain.runTestGroup (C:\Users\shreyanskoushal\Playwright-TypeScript-Framework-main07012024\node_modules\playwright\lib\worker\workerMain.js:193:11)
+    at process.<anonymous> (C:\Users\shreyanskoushal\Playwright-TypeScript-Framework-main07012024\node_modules\playwright\lib\common\process.js:65:22)
+Error in project creation workflow: TypeError: this.waitFor is not a function
+    at PJMBasicPage.fillProjectBasicInfo (C:\Users\shreyanskoushal\Playwright-TypeScript-Framework-main07012024\pages\pjmbasicPage.js:64:18)
+    at PJMBasicPage.createProject (C:\Users\shreyanskoushal\Playwright-TypeScript-Framework-main07012024\pages\pjmbasicPage.js:206:7)
+    at C:\Users\shreyanskoushal\Playwright-TypeScript-Framework-main07012024\e2e\pjmbasic.spec.ts:36:7
+    at TestStepInfoImpl._runStepBody (C:\Users\shreyanskoushal\Playwright-TypeScript-Framework-main07012024\node_modules\playwright\lib\worker\testInfo.js:449:14)
+    at C:\Users\shreyanskoushal\Playwright-TypeScript-Framework-main07012024\node_modules\playwright\lib\common\testType.js:244:20
+    at C:\Users\shreyanskoushal\Playwright-TypeScript-Framework-main07012024\node_modules\playwright\lib\common\testType.js:242:18
+    at TestTypeImpl._step (C:\Users\shreyanskoushal\Playwright-TypeScript-Framework-main07012024\node_modules\playwright\lib\common\testType.js:239:12)
+    at C:\Users\shreyanskoushal\Playwright-TypeScript-Framework-main07012024\e2e\pjmbasic.spec.ts:35:5
+    at C:\Users\shreyanskoushal\Playwright-TypeScript-Framework-main07012024\node_modules\playwright\lib\worker\workerMain.js:304:9
+    at C:\Users\shreyanskoushal\Playwright-TypeScript-Framework-main07012024\node_modules\playwright\lib\worker\testInfo.js:284:11
+    at TimeoutManager.withRunnable (C:\Users\shreyanskoushal\Playwright-TypeScript-Framework-main07012024\node_modules\playwright\lib\worker\timeoutManager.js:67:14)
+    at TestInfoImpl._runWithTimeout (C:\Users\shreyanskoushal\Playwright-TypeScript-Framework-main07012024\node_modules\playwright\lib\worker\testInfo.js:282:7)
+    at C:\Users\shreyanskoushal\Playwright-TypeScript-Framework-main07012024\node_modules\playwright\lib\worker\workerMain.js:302:7
+    at WorkerMain._runTest (C:\Users\shreyanskoushal\Playwright-TypeScript-Framework-main07012024\node_modules\playwright\lib\worker\workerMain.js:277:5)
+    at WorkerMain.runTestGroup (C:\Users\shreyanskoushal\Playwright-TypeScript-Framework-main07012024\node_modules\playwright\lib\worker\workerMain.js:193:11)
+    at process.<anonymous> (C:\Users\shreyanskoushal\Playwright-TypeScript-Framework-main07012024\node_modules\playwright\lib\common\process.js:65:22)

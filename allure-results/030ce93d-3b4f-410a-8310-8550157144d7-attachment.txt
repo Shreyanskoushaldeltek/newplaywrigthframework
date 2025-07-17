@@ -1,0 +1,76 @@
+Error filling project basic information: page.waitForTimeout: Test timeout of 30000ms exceeded.
+    at PJMBasicPage.fillProjectBasicInfo (C:\Users\shreyanskoushal\Playwright-TypeScript-Framework-main07012024\pages\pjmbasicPage.js:62:23)
+    at PJMBasicPage.createProject (C:\Users\shreyanskoushal\Playwright-TypeScript-Framework-main07012024\pages\pjmbasicPage.js:203:7)
+    at C:\Users\shreyanskoushal\Playwright-TypeScript-Framework-main07012024\e2e\pjmbasic.spec.ts:36:7
+    at C:\Users\shreyanskoushal\Playwright-TypeScript-Framework-main07012024\e2e\pjmbasic.spec.ts:35:5 {
+  [Symbol(step)]: {
+    stepId: 'pw:api@29',
+    location: {
+      file: 'C:\\Users\\shreyanskoushal\\Playwright-TypeScript-Framework-main07012024\\pages\\pjmbasicPage.js',
+      line: 62,
+      column: 23,
+      function: 'PJMBasicPage.fillProjectBasicInfo'
+    },
+    category: 'pw:api',
+    title: 'Wait for timeout',
+    apiName: 'page.waitForTimeout',
+    params: { timeout: 3000 },
+    boxedStack: undefined,
+    steps: [],
+    attachmentIndices: [],
+    info: TestStepInfoImpl {
+      annotations: [],
+      _testInfo: [TestInfoImpl],
+      _stepId: 'pw:api@29'
+    },
+    complete: [Function: complete],
+    endWallTime: 1752683559254,
+    error: {
+      message: 'Error: page.waitForTimeout: Test timeout of 30000ms exceeded.',
+      stack: 'Error: page.waitForTimeout: Test timeout of 30000ms exceeded.\n' +
+        '    at PJMBasicPage.fillProjectBasicInfo (C:\\Users\\shreyanskoushal\\Playwright-TypeScript-Framework-main07012024\\pages\\pjmbasicPage.js:62:23)\n' +
+        '    at PJMBasicPage.createProject (C:\\Users\\shreyanskoushal\\Playwright-TypeScript-Framework-main07012024\\pages\\pjmbasicPage.js:203:7)\n' +
+        '    at C:\\Users\\shreyanskoushal\\Playwright-TypeScript-Framework-main07012024\\e2e\\pjmbasic.spec.ts:36:7\n' +
+        '    at C:\\Users\\shreyanskoushal\\Playwright-TypeScript-Framework-main07012024\\e2e\\pjmbasic.spec.ts:35:5',
+      cause: undefined
+    }
+  }
+}
+Error in project creation workflow: page.waitForTimeout: Test timeout of 30000ms exceeded.
+    at PJMBasicPage.fillProjectBasicInfo (C:\Users\shreyanskoushal\Playwright-TypeScript-Framework-main07012024\pages\pjmbasicPage.js:62:23)
+    at PJMBasicPage.createProject (C:\Users\shreyanskoushal\Playwright-TypeScript-Framework-main07012024\pages\pjmbasicPage.js:203:7)
+    at C:\Users\shreyanskoushal\Playwright-TypeScript-Framework-main07012024\e2e\pjmbasic.spec.ts:36:7
+    at C:\Users\shreyanskoushal\Playwright-TypeScript-Framework-main07012024\e2e\pjmbasic.spec.ts:35:5 {
+  [Symbol(step)]: {
+    stepId: 'pw:api@29',
+    location: {
+      file: 'C:\\Users\\shreyanskoushal\\Playwright-TypeScript-Framework-main07012024\\pages\\pjmbasicPage.js',
+      line: 62,
+      column: 23,
+      function: 'PJMBasicPage.fillProjectBasicInfo'
+    },
+    category: 'pw:api',
+    title: 'Wait for timeout',
+    apiName: 'page.waitForTimeout',
+    params: { timeout: 3000 },
+    boxedStack: undefined,
+    steps: [],
+    attachmentIndices: [],
+    info: TestStepInfoImpl {
+      annotations: [],
+      _testInfo: [TestInfoImpl],
+      _stepId: 'pw:api@29'
+    },
+    complete: [Function: complete],
+    endWallTime: 1752683559254,
+    error: {
+      message: 'Error: page.waitForTimeout: Test timeout of 30000ms exceeded.',
+      stack: 'Error: page.waitForTimeout: Test timeout of 30000ms exceeded.\n' +
+        '    at PJMBasicPage.fillProjectBasicInfo (C:\\Users\\shreyanskoushal\\Playwright-TypeScript-Framework-main07012024\\pages\\pjmbasicPage.js:62:23)\n' +
+        '    at PJMBasicPage.createProject (C:\\Users\\shreyanskoushal\\Playwright-TypeScript-Framework-main07012024\\pages\\pjmbasicPage.js:203:7)\n' +
+        '    at C:\\Users\\shreyanskoushal\\Playwright-TypeScript-Framework-main07012024\\e2e\\pjmbasic.spec.ts:36:7\n' +
+        '    at C:\\Users\\shreyanskoushal\\Playwright-TypeScript-Framework-main07012024\\e2e\\pjmbasic.spec.ts:35:5',
+      cause: undefined
+    }
+  }
+}

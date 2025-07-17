@@ -1,0 +1,70 @@
+# Page snapshot
+
+```yaml
+- img
+- img
+- img
+- img
+- text: Costpoint Company 1
+- img
+- img
+- img
+- text: Welcome screen
+- img
+- text: Dashboard
+- img
+- text: My menu
+- img
+- text: Open Applications 1
+- img
+- text: Menu Search
+- img
+- text: Accounting
+- img
+- text: Planning
+- img
+- text: Capture & Contracts
+- img
+- text: Projects
+- img
+- text: Materials
+- img
+- text: People
+- img
+- text: Time & Expense
+- img
+- text: Reports & Analytics
+- img
+- text: Admin
+- img
+- text: Dela AI
+- img
+- text: Notifications
+- img
+- text: Files
+- img
+- text: Print
+- img
+- text: Layout Options
+- img
+- text: Two Columns
+- img
+- text: Microphone
+- img
+- text: Offline
+- img
+- text: Keyboard Shortcuts
+- img
+- text: Help
+- button "Actions" [disabled]:
+  - text: Actions
+  - img
+- button "Refresh" [disabled]:
+  - img
+  - img
+- button "Save" [disabled]:
+  - text: Save
+  - img
+- button:
+  - img
+```

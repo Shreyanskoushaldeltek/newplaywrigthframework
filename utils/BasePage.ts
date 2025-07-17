@@ -72,10 +72,10 @@ export default class BasePage {
   }
 
   async getDynamicXPathLocator(text: string) {
-  return this.page.locator(`//div[contains(text(),"${text}")]`);
+  return this.page.locator(`//*[contains(text(),"${text}")]`);
 }
   async ExactXPathLocator(text: string) {
-  return this.page.locator(`//div[text()="${text}"]`);
+  return this.page.locator(`//*[text()="${text}"]`);
 }
 
   generateRandomString(length: number): string {

@@ -1,0 +1,69 @@
+# Page snapshot
+
+```yaml
+- img
+- img
+- img
+- img
+- text: Costpoint Company 1
+- img
+- img
+- img
+- text: Welcome screen
+- img
+- text: Dashboard
+- img
+- text: My menu
+- img
+- text: Open Applications
+- img
+- text: Menu Search
+- img
+- text: Accounting
+- img
+- text: Planning
+- img
+- text: Capture & Contracts
+- img
+- text: Projects
+- img
+- text: Materials
+- img
+- text: People
+- img
+- text: Time & Expense
+- img
+- text: Reports & Analytics
+- img
+- text: Admin
+- img
+- text: Dela AI
+- img
+- text: Notifications
+- img
+- text: Files
+- img
+- text: Print
+- img
+- text: Layout Options
+- img
+- text: Microphone
+- img
+- text: Offline
+- img
+- text: Keyboard Shortcuts
+- img
+- text: Help
+- banner: Recent Activity
+- text: Manage Customer Credit Ratings Manage Proposal BOM Cost Estimates - Summarized Maintain Budget Programs Maintain Budget Groups Update Project Budgets Manage Vendor Workforce
+- banner
+- article: Your browser does not support the video tag. New User Experience Your browser does not support the video tag. Classic vs New UI Your browser does not support the video tag. My Menu Setup Your browser does not support the video tag. Using Ask Dela Your browser does not support the video tag. Command Center Your browser does not support the video tag. Finding Costpoint Training
+- banner:
+  - text: My Menu
+  - button:
+    - img
+- article:
+  - text: +
+  - img
+  - text: Create shortcuts to your most frequently used applications in Costpoint. They will appear here for quick and easy access. Click the + button to add your first shortcut!
+```

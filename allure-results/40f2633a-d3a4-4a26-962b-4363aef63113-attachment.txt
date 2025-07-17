@@ -1,0 +1,96 @@
+Error filling project basic information: locator.hover: Test timeout of 30000ms exceeded.
+Call log:
+  - waiting for locator('#IMG_S_PROJ_TYPE')
+
+    at PJMBasicPage.selectFromDropdown (C:\Users\shreyanskoushal\Playwright-TypeScript-Framework-main07012024\pages\pjmbasicPage.js:140:20)
+    at PJMBasicPage.fillProjectBasicInfo (C:\Users\shreyanskoushal\Playwright-TypeScript-Framework-main07012024\pages\pjmbasicPage.js:69:20)
+    at PJMBasicPage.createProject (C:\Users\shreyanskoushal\Playwright-TypeScript-Framework-main07012024\pages\pjmbasicPage.js:204:7)
+    at C:\Users\shreyanskoushal\Playwright-TypeScript-Framework-main07012024\e2e\pjmbasic.spec.ts:36:7
+    at C:\Users\shreyanskoushal\Playwright-TypeScript-Framework-main07012024\e2e\pjmbasic.spec.ts:35:5 {
+  [Symbol(step)]: {
+    stepId: 'pw:api@31',
+    location: {
+      file: 'C:\\Users\\shreyanskoushal\\Playwright-TypeScript-Framework-main07012024\\pages\\pjmbasicPage.js',
+      line: 140,
+      column: 20,
+      function: 'PJMBasicPage.selectFromDropdown'
+    },
+    category: 'pw:api',
+    title: "Hover locator('#IMG_S_PROJ_TYPE')",
+    apiName: 'locator.hover',
+    params: { selector: '#IMG_S_PROJ_TYPE', strict: true, timeout: 0 },
+    boxedStack: undefined,
+    steps: [],
+    attachmentIndices: [],
+    info: TestStepInfoImpl {
+      annotations: [],
+      _testInfo: [TestInfoImpl],
+      _stepId: 'pw:api@31'
+    },
+    complete: [Function: complete],
+    endWallTime: 1752683978306,
+    error: {
+      message: 'Error: locator.hover: Test timeout of 30000ms exceeded.\n' +
+        'Call log:\n' +
+        "\x1B[2m  - waiting for locator('#IMG_S_PROJ_TYPE')\x1B[22m\n",
+      stack: 'Error: locator.hover: Test timeout of 30000ms exceeded.\n' +
+        'Call log:\n' +
+        "\x1B[2m  - waiting for locator('#IMG_S_PROJ_TYPE')\x1B[22m\n" +
+        '\n' +
+        '    at PJMBasicPage.selectFromDropdown (C:\\Users\\shreyanskoushal\\Playwright-TypeScript-Framework-main07012024\\pages\\pjmbasicPage.js:140:20)\n' +
+        '    at PJMBasicPage.fillProjectBasicInfo (C:\\Users\\shreyanskoushal\\Playwright-TypeScript-Framework-main07012024\\pages\\pjmbasicPage.js:69:20)\n' +
+        '    at PJMBasicPage.createProject (C:\\Users\\shreyanskoushal\\Playwright-TypeScript-Framework-main07012024\\pages\\pjmbasicPage.js:204:7)\n' +
+        '    at C:\\Users\\shreyanskoushal\\Playwright-TypeScript-Framework-main07012024\\e2e\\pjmbasic.spec.ts:36:7\n' +
+        '    at C:\\Users\\shreyanskoushal\\Playwright-TypeScript-Framework-main07012024\\e2e\\pjmbasic.spec.ts:35:5',
+      cause: undefined
+    }
+  }
+}
+Error in project creation workflow: locator.hover: Test timeout of 30000ms exceeded.
+Call log:
+  - waiting for locator('#IMG_S_PROJ_TYPE')
+
+    at PJMBasicPage.selectFromDropdown (C:\Users\shreyanskoushal\Playwright-TypeScript-Framework-main07012024\pages\pjmbasicPage.js:140:20)
+    at PJMBasicPage.fillProjectBasicInfo (C:\Users\shreyanskoushal\Playwright-TypeScript-Framework-main07012024\pages\pjmbasicPage.js:69:20)
+    at PJMBasicPage.createProject (C:\Users\shreyanskoushal\Playwright-TypeScript-Framework-main07012024\pages\pjmbasicPage.js:204:7)
+    at C:\Users\shreyanskoushal\Playwright-TypeScript-Framework-main07012024\e2e\pjmbasic.spec.ts:36:7
+    at C:\Users\shreyanskoushal\Playwright-TypeScript-Framework-main07012024\e2e\pjmbasic.spec.ts:35:5 {
+  [Symbol(step)]: {
+    stepId: 'pw:api@31',
+    location: {
+      file: 'C:\\Users\\shreyanskoushal\\Playwright-TypeScript-Framework-main07012024\\pages\\pjmbasicPage.js',
+      line: 140,
+      column: 20,
+      function: 'PJMBasicPage.selectFromDropdown'
+    },
+    category: 'pw:api',
+    title: "Hover locator('#IMG_S_PROJ_TYPE')",
+    apiName: 'locator.hover',
+    params: { selector: '#IMG_S_PROJ_TYPE', strict: true, timeout: 0 },
+    boxedStack: undefined,
+    steps: [],
+    attachmentIndices: [],
+    info: TestStepInfoImpl {
+      annotations: [],
+      _testInfo: [TestInfoImpl],
+      _stepId: 'pw:api@31'
+    },
+    complete: [Function: complete],
+    endWallTime: 1752683978306,
+    error: {
+      message: 'Error: locator.hover: Test timeout of 30000ms exceeded.\n' +
+        'Call log:\n' +
+        "\x1B[2m  - waiting for locator('#IMG_S_PROJ_TYPE')\x1B[22m\n",
+      stack: 'Error: locator.hover: Test timeout of 30000ms exceeded.\n' +
+        'Call log:\n' +
+        "\x1B[2m  - waiting for locator('#IMG_S_PROJ_TYPE')\x1B[22m\n" +
+        '\n' +
+        '    at PJMBasicPage.selectFromDropdown (C:\\Users\\shreyanskoushal\\Playwright-TypeScript-Framework-main07012024\\pages\\pjmbasicPage.js:140:20)\n' +
+        '    at PJMBasicPage.fillProjectBasicInfo (C:\\Users\\shreyanskoushal\\Playwright-TypeScript-Framework-main07012024\\pages\\pjmbasicPage.js:69:20)\n' +
+        '    at PJMBasicPage.createProject (C:\\Users\\shreyanskoushal\\Playwright-TypeScript-Framework-main07012024\\pages\\pjmbasicPage.js:204:7)\n' +
+        '    at C:\\Users\\shreyanskoushal\\Playwright-TypeScript-Framework-main07012024\\e2e\\pjmbasic.spec.ts:36:7\n' +
+        '    at C:\\Users\\shreyanskoushal\\Playwright-TypeScript-Framework-main07012024\\e2e\\pjmbasic.spec.ts:35:5',
+      cause: undefined
+    }
+  }
+}
