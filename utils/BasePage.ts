@@ -72,10 +72,10 @@ export default class BasePage {
   }
 
   async getDynamicXPathLocator(text: string) {
-  return this.page.locator(`//div[contains(text(),"${text}")]`);
+  return this.page.locator(`//*[contains(text(),"${text}")]`);
 }
   async ExactXPathLocator(text: string) {
-  return this.page.locator(`//div[text()="${text}"]`);
+  return this.page.locator(`//*[text()="${text}"]`);
 }
 
   generateRandomString(length: number): string {
@@ -156,6 +156,76 @@ export default class BasePage {
     if (actualValue !== value) {
       throw new Error(`Value not set correctly. Expected: '${value}', Actual: '${actualValue}'`);
     }
+  }
+
+  /** Handle dialog boxes with custom message handling */
+  async handleDialog(expectedMessage?: string, action: 'accept' | 'dismiss' = 'dismiss'): Promise<void> {
+    this.page.once('dialog', dialog => {
+      console.log(`Dialog appeared: ${dialog.message()}`);
+      
+      if (expectedMessage && !dialog.message().includes(expectedMessage)) {
+        console.warn(`Unexpected dialog message. Expected: '${expectedMessage}', Actual: '${dialog.message()}'`);
+      }
+      
+      if (action === 'accept') {
+        dialog.accept().catch(() => {});
+      } else {
+        dialog.dismiss().catch(() => {});
+      }
+    });
+  }
+
+  /** Handle multiple popup patterns */
+  async handlePopups(): Promise<void> {
+    const popupSelectors = [
+      '.modal-dialog',
+      '.popup-container', 
+      '[role="dialog"]',
+      '.overlay',
+      'curtain-overlay'
+    ];
+    
+    for (const selector of popupSelectors) {
+      try {
+        const popup = this.page.locator(selector);
+        if (await popup.isVisible()) {
+          const closeButton = popup.locator('button:has-text("Close"), button:has-text("Cancel"), .close-btn, .close-button');
+          if (await closeButton.isVisible()) {
+            await closeButton.click();
+            console.log(`Closed popup: ${selector}`);
+            await this.page.waitForTimeout(500);
+          }
+        }
+      } catch (error) {
+        // Continue with next selector
+      }
+    }
+  }
+
+  /** Enhanced tab navigation with wait */
+  async navigateToTab(tabLocator: Locator, waitForContent?: Locator): Promise<void> {
+    await tabLocator.waitFor({ state: 'visible' });
+    await tabLocator.click();
+    
+    if (waitForContent) {
+      await waitForContent.waitFor({ state: 'visible', timeout: 10000 });
+    }
+    
+    await this.page.waitForTimeout(1000); // Brief pause for tab content to load
+  }
+
+  /** Enhanced dropdown selection with better error handling */
+  async selectDropdownOption(dropdown: Locator, optionText: string): Promise<void> {
+    await this.retryAction(async () => {
+      await dropdown.waitFor({ state: 'visible' });
+      await dropdown.hover();
+      await dropdown.click();
+      await this.page.waitForTimeout(1000);
+      
+      const option = await this.ExactXPathLocator(optionText);
+      await option.first().waitFor({ state: 'visible', timeout: 5000 });
+      await option.first().click();
+    });
   }
 
 }
