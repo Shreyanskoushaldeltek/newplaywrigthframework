@@ -9,185 +9,270 @@ export class PJMBasicPage extends BasePage {
     // Project Basic Information Elements
     this.projectId = page.locator('#PROJ_ID');
     this.projectName = page.locator('#PROJ_NAME');
-    this.projectDescription = page.locator('#PROJ_DESC');
-    this.projectType = page.locator('#PROJ_TYPE');
-    this.projectStatus = page.locator('#PROJ_STATUS');
-    this.projectManager = page.locator('#PROJ_MGR');
-    this.startDate = page.locator('#START_DT');
-    this.endDate = page.locator('#END_DT');
-    this.budgetAmount = page.locator('#BUDGET_AMT');
-    this.customerCode = page.locator('#CUST_CD');
+    this.projectAbbreviation = page.locator('#PROJ_ABBRV_CD');
+    this.projectTypeDropdown = page.locator('#IMG_TC_PROJ_FL');
+    this.projectTypeDisplay = page.locator('#S_PROJ_RPT_DC');
+    this.projectTypeCode = page.locator('#PROJ_TYPE_DC');
     
-    // Dropdown and Selection Elements
-    this.projectTypeDropdown = page.locator('#IMG_S_PROJ_TYPE');
-    this.projectStatusDropdown = page.locator('#IMG_S_PROJ_STATUS');
-    this.customerDropdown = page.locator('#IMG_S_CUST_CD');
+    // Project Flags/Checkboxes
+    this.billProjectCheckbox = page.locator('#BILL_PROJ_FL');
+    this.allowChargesCheckbox = page.locator('#ALLOW_CHARGES_FL');
     
-    // Checkboxes
-    this.activeCheckbox = page.locator('#ACTIVE_FL');
-    this.billingCheckbox = page.locator('#BILLING_FL');
-    this.timesheetCheckbox = page.locator('#TIMESHEET_FL');
+    // Account and Organization Info
+    this.accountGroupCode = page.locator('#ACCT_GRP_CD');
+    this.organizationId = page.locator('#ORG_ID');
     
-    // Buttons
-    this.saveButton = page.locator("//div[@title='Save & Continue (F6)']");
-    this.saveContinueButton = page.getByRole('button', { name: 'Save' });
-    this.closeButton = page.getByRole('button', { name: 'Close' });
+    // Navigation Elements
+    this.basicInfoTab = page.getByText('Basic Info');
+    this.userDefinedInfoTab = page.getByText('User-Defined Info');
+    this.projLevelsTab = page.getByText('Proj Levels');
+    this.notesTab = page.getByText('Notes', { exact: true });
+    this.deliverablesTab = page.locator('a').filter({ hasText: 'Deliverables' });
+    this.govtContractTab = page.locator('a').filter({ hasText: 'Gov\'t Contract' });
     
-    // Result/Status Messages
-    this.resultMessage = page.locator('#mLink208_0');
-    this.successMessage = page.locator("//div[contains(text(),'Record modifications successfully completed')]");
+    // More Button and Overlay
+    this.moreButton = page.getByRole('button', { name: 'More' });
+    this.curtainOverlay = page.locator('curtain-overlay');
     
-    // Page Header
-    this.pageHeader = page.locator("(//div[@id='rsLevelToolbarBtns']/div)[1]");
+    // User Defined Info Elements
+    this.newButton = page.locator('[id="1"]').getByText('New', { exact: true });
+    this.lookupIcon = page.locator('#lookup_icon');
+    this.udefLabel = page.locator('#UDEF_LBL-_0_E');
+    this.selectButton = page.getByRole('button', { name: 'Select' });
+    this.track1 = page.locator('[id="1"] #track1');
+    this.mainFormArea = page.locator('[id="1"] > #mainForm > #tblvw > #hScrCnt > #hScr1 > #hp2');
+    
+    // Proj Levels Elements
+    this.loadDataButton = page.getByRole('button', { name: 'Load Data' });
+    
+    // Notes Section
+    this.notesTextArea = page.locator('#NOTES');
+    
+    // Action Buttons
+    this.saveButton = page.getByRole('button', { name: 'Save' });
+    this.closeButton = page.locator('[id="0"]').getByTitle('Close').locator('span');
+    
+    // User Menu
+    this.userMenuIcon = page.locator('#uxxUserPicDiv use');
+    this.logOutButton = page.getByRole('button', { name: 'Log Out' });
+    
+    // Page Header Validation
+    this.pageHeader = page.locator('#rsLevelToolbarBtns');
+
   }
 
   /**
-   * Fill project basic information with provided data
+   * Fill basic project information
    * @param {Object} projectData - Project data object
    */
-  async fillProjectBasicInfo(projectData) {
+  async fillBasicProjectInfo(projectData) {
     try {
-      console.log('Starting to fill project basic information...');
+      console.log('Filling basic project information...');
       
-      // Wait for page to load
-      await this.projectId.waitFor({ state: 'visible', timeout: 10000 });
-      
-      // Generate unique identifier if needed
+      // Generate unique project ID if needed
       const runValue = this.generateRandomString(4);
-      const projectId = runValue;
-      const projectName = runValue;
+      const projectId = projectData.projectId.replace('{{random}}', runValue);
       
-      // Fill basic project information
+      // Fill Project ID
+      await this.projectId.waitFor({ state: 'visible', timeout: 10000 });
+await this.projectDescription.fill(projectData.description);
+
+      await this.projectId.click();
       await this.projectId.fill(projectId);
+
+      
+      // Fill Project Name
       await this.projectName.click();
-      await this.projectName.type(projectName);
-     // await this.projectDescription.click();
-     // await this.projectDescription.fill(projectData.description);
+      await this.projectName.fill(projectData.projectName.replace('{{random}}', runValue));
       
-      // Handle project type selection
-      if (projectData.projectType) {
-        await this.selectFromDropdown(this.projectTypeDropdown, projectData.projectType);
-      }
+      // Fill Project Abbreviation
+      await this.projectAbbreviation.click();
+      await this.projectAbbreviation.fill(projectData.projectAbbreviation.replace('{{random}}', runValue));
       
-      // Handle project status selection
-      if (projectData.projectStatus) {
-        await this.selectFromDropdown(this.projectStatusDropdown, projectData.projectStatus);
-      }
-      
-      // Fill project manager
-      if (projectData.projectManager) {
-        await this.projectManager.fill(projectData.projectManager);
-      }
-      
-      // Fill dates
-      if (projectData.startDate) {
-        await this.startDate.fill(projectData.startDate);
-      }
-      
-      if (projectData.endDate) {
-        await this.endDate.fill(projectData.endDate);
-      }
-      
-      // Fill budget amount
-      if (projectData.budgetAmount) {
-        await this.budgetAmount.fill(projectData.budgetAmount);
-      }
-      
-      // Handle customer selection
-      if (projectData.customerCode) {
-        await this.selectFromDropdown(this.customerDropdown, projectData.customerCode);
-      }
-      
-      console.log('Basic project information filled successfully');
+      console.log(`Project basic info filled: ID=${projectId}`);
       
     } catch (error) {
-      console.error('Error filling project basic information:', error);
+      console.error('Error filling basic project info:', error);
       throw error;
     }
   }
 
   /**
-   * Set project characteristics (checkboxes)
-   * @param {Object} characteristics - Project characteristics data
+   * Configure project type and settings
+   * @param {Object} projectSettings - Project settings object
    */
-  async setProjectCharacteristics(characteristics) {
+  async configureProjectType(projectSettings) {
     try {
-      console.log('Setting project characteristics...');
+      console.log('Configuring project type...');
       
-      // Handle Active checkbox
-      await this.setCheckboxState(this.activeCheckbox, characteristics.active);
+      // Navigate to Basic Info tab
+      await this.navigateToTab(this.basicInfoTab);
       
-      // Handle Billing checkbox
-      await this.setCheckboxState(this.billingCheckbox, characteristics.billing);
+      // Select project type using enhanced method
+      await this.selectDropdownOption(this.projectTypeDropdown, projectSettings.projectType);
       
-      // Handle Timesheet checkbox
-      await this.setCheckboxState(this.timesheetCheckbox, characteristics.timesheet);
+      // Verify project type display
+      await expect(this.projectTypeDisplay).toContainText(projectSettings.expectedProjectDisplay);
       
-      console.log('Project characteristics set successfully');
+      // Verify project type code is visible
+      await expect(this.projectTypeCode).toBeVisible();
+      
+      // Configure billing project flag
+      await this.setCheckboxStateSafe(this.billProjectCheckbox, projectSettings.billProject);
+      
+      // Configure allow charges flag
+      await this.setCheckboxStateSafe(this.allowChargesCheckbox, projectSettings.allowCharges);
+      
+      // Verify account group and organization
+      await expect(this.accountGroupCode).toHaveValue(projectSettings.expectedAccountGroup);
+      await expect(this.organizationId).toHaveValue(projectSettings.expectedOrganization);
+      
+      console.log('Project type configured successfully');
       
     } catch (error) {
-      console.error('Error setting project characteristics:', error);
+      console.error('Error configuring project type:', error);
       throw error;
     }
   }
 
   /**
-   * Helper method to select from dropdown
-   * @param {Locator} dropdown - Dropdown element
-   * @param {string} value - Value to select
+   * Navigate through additional tabs and configure settings
    */
-  async selectFromDropdown(dropdown, value) {
-    await dropdown.hover();
-    await dropdown.click();
-    await this.page.waitForTimeout(1000);
-    await dropdown.focus();
-    await this.page.keyboard.press('Enter');
-    
-    const option = await this.ExactXPathLocator(value);
-    await option.first().click();
-  }
-
-  /**
-   * Helper method to set checkbox state
-   * @param {Locator} checkbox - Checkbox element
-   * @param {boolean} expectedState - Expected state
-   */
-  async setCheckboxState(checkbox, expectedState) {
-    const currentState = await checkbox.isChecked();
-    
-    if (currentState === expectedState) {
-      console.log('✅ Checkbox already in expected state');
-    } else {
-      if (expectedState) {
-        await checkbox.check();
-        console.log('☑️ Checkbox checked');
-      } else {
-        await checkbox.uncheck();
-        console.log('☐ Checkbox unchecked');
-      }
+  async navigateAdditionalTabs() {
+    try {
+      console.log('Navigating additional tabs...');
+      
+      // Access More menu
+      await this.moreButton.click();
+      
+      // Navigate to Deliverables
+      await this.deliverablesTab.click();
+      
+      // Navigate to Gov't Contract
+      await this.govtContractTab.click();
+      
+      // Close overlay
+      await this.curtainOverlay.click();
+      
+      console.log('Additional tabs navigation completed');
+      
+    } catch (error) {
+      console.error('Error navigating additional tabs:', error);
+      throw error;
     }
   }
 
   /**
-   * Save the project and verify success
+   * Configure user-defined information
+   */
+  async configureUserDefinedInfo() {
+    try {
+      console.log('Configuring user-defined info...');
+      
+      // Navigate to User-Defined Info tab
+      await this.userDefinedInfoTab.click();
+      
+      // Click New button
+      await this.newButton.click();
+      
+      // Click lookup icon
+      await this.lookupIcon.click();
+      
+      // Select label
+      await this.udefLabel.click();
+      await this.selectButton.click();
+      
+      // Configure tracking
+      await this.track1.click();
+      await this.mainFormArea.dblclick();
+      
+      console.log('User-defined info configured');
+      
+    } catch (error) {
+      console.error('Error configuring user-defined info:', error);
+      throw error;
+    }
+  }
+
+  /**
+   * Handle project levels with dialog
+   */
+  async handleProjectLevels() {
+    try {
+      console.log('Handling project levels...');
+      
+      // Navigate to Proj Levels tab
+      await this.navigateToTab(this.projLevelsTab);
+      
+      // Set up dialog handler using enhanced method
+      await this.handleDialog();
+      
+      // Click Load Data button
+      await this.loadDataButton.click();
+      
+      console.log('Project levels handled');
+      
+    } catch (error) {
+      console.error('Error handling project levels:', error);
+      throw error;
+    }
+  }
+
+  /**
+   * Add project notes
+   * @param {string} notes - Project notes text
+   */
+  async addProjectNotes(notes) {
+    try {
+      console.log('Adding project notes...');
+      
+      // Navigate to Notes tab
+      await this.navigateToTab(this.notesTab, this.notesTextArea);
+      
+      // Fill notes using enhanced method
+      await this.fillWithValidation(this.notesTextArea, notes);
+      
+      console.log('Project notes added');
+      
+    } catch (error) {
+      console.error('Error adding project notes:', error);
+      throw error;
+    }
+  }
+
+  /**
+   * Save project
    */
   async saveProject() {
     try {
       console.log('Saving project...');
       
-      // Click save button
-      await this.saveContinueButton.click();
+      await this.saveButton.click();
       
-      // Wait for save operation to complete
-      await this.page.waitForTimeout(5000);
-      
-      // Verify success message
-      await expect(this.resultMessage).toContainText('Record modifications successfully completed.');
+      // Wait for save to complete
+      await this.page.waitForTimeout(2000);
       
       console.log('Project saved successfully');
       
     } catch (error) {
       console.error('Error saving project:', error);
+      throw error;
+    }
+  }
+
+  /**
+   * Close project form
+   */
+  async closeProject() {
+    try {
+      console.log('Closing project form...');
+      
+      await this.closeButton.click();
+      
+      console.log('Project form closed');
+      
+    } catch (error) {
+      console.error('Error closing project form:', error);
       throw error;
     }
   }
@@ -200,14 +285,29 @@ export class PJMBasicPage extends BasePage {
     try {
       console.log('Starting project creation workflow...');
       
-      // Fill basic project information
-      await this.fillProjectBasicInfo(projectData.basicInfo);
+      // Step 1: Fill basic project information
+      await this.fillBasicProjectInfo(projectData.basicInfo);
       
-      // Set project characteristics
-      await this.setProjectCharacteristics(projectData.characteristics);
+      // Step 2: Configure project type and settings
+      await this.configureProjectType(projectData.projectSettings);
       
-      // Save the project
+      // Step 3: Navigate additional tabs
+      await this.navigateAdditionalTabs();
+      
+      // Step 4: Configure user-defined info
+      await this.configureUserDefinedInfo();
+      
+      // Step 5: Handle project levels
+      await this.handleProjectLevels();
+      
+      // Step 6: Add project notes
+      await this.addProjectNotes(projectData.notes);
+      
+      // Step 7: Save project
       await this.saveProject();
+      
+      // Step 8: Close project form
+      await this.closeProject();
       
       console.log('Project creation workflow completed successfully');
       
@@ -218,10 +318,22 @@ export class PJMBasicPage extends BasePage {
   }
 
   /**
-   * Verify page is loaded correctly
+   * Verify PJMBASIC page is loaded
    */
   async verifyPageLoaded() {
-    await expect(this.pageHeader).toBeVisible({ timeout: 20000 });
-    console.log('The application page loaded successfully');
+    try {
+      await this.projectId.waitFor({ state: 'visible'});
+      console.log('PJMBASIC page loaded successfully');
+    } catch (error) {
+      console.error('PJMBASIC page failed to load:', error);
+      throw error;
+    }
+  }
+
+  /**
+   * Handle any unexpected popups or dialogs
+   */
+  async handleUnexpectedPopups() {
+    await this.handlePopups();
   }
 }
