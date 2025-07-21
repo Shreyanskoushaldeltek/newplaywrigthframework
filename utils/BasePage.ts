@@ -208,7 +208,7 @@ export default class BasePage {
     await tabLocator.click();
     
     if (waitForContent) {
-      await waitForContent.waitFor({ state: 'visible', timeout: 10000 });
+      await waitForContent.waitFor({ state: 'visible'});
     }
     
     await this.page.waitForTimeout(1000); // Brief pause for tab content to load

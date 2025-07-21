@@ -31,7 +31,7 @@ export class PJMBasicPage extends BasePage {
     this.govtContractTab = page.locator('a').filter({ hasText: 'Gov\'t Contract' });
     
     // More Button and Overlay
-    this.moreButton = page.getByRole('button', { name: 'More' });
+    this.moreButton = page.locator("//div[text()='More']/parent::button");
     this.curtainOverlay = page.locator('curtain-overlay');
     
     // User Defined Info Elements
@@ -41,9 +41,11 @@ export class PJMBasicPage extends BasePage {
     this.selectButton = page.getByRole('button', { name: 'Select' });
     this.track1 = page.locator('[id="1"] #track1');
     this.mainFormArea = page.locator('[id="1"] > #mainForm > #tblvw > #hScrCnt > #hScr1 > #hp2');
+    this.textValue = page.locator('#UDEF_TXT-_0_N')
+    this.ProjectLevelTable =page.locator('#LVL_NAME-_0_N')
     
     // Proj Levels Elements
-    this.loadDataButton = page.getByRole('button', { name: 'Load Data' });
+    this.loadDataButton = page.locator('#LOAD_DATA___T');
     
     // Notes Section
     this.notesTextArea = page.locator('#NOTES');
@@ -70,25 +72,23 @@ export class PJMBasicPage extends BasePage {
       console.log('Filling basic project information...');
       
       // Generate unique project ID if needed
-      const runValue = this.generateRandomString(4);
+      const runValue = this.generateRandomString(2);
       const projectId = projectData.projectId.replace('{{random}}', runValue);
       
       // Fill Project ID
-      await this.projectId.waitFor({ state: 'visible', timeout: 10000 });
-await this.projectDescription.fill(projectData.description);
-
+      await this.projectId.waitFor({ state: 'visible'});
       await this.projectId.click();
       await this.projectId.fill(projectId);
 
       
       // Fill Project Name
       await this.projectName.click();
-      await this.projectName.fill(projectData.projectName.replace('{{random}}', runValue));
-      
+      await this.projectName.type(projectData.projectName.replace('{{random}}', runValue));
+      await this.page.waitForTimeout(2000);
       // Fill Project Abbreviation
       await this.projectAbbreviation.click();
-      await this.projectAbbreviation.fill(projectData.projectAbbreviation.replace('{{random}}', runValue));
-      
+      await this.projectAbbreviation.type(projectData.projectAbbreviation.replace('{{random}}', runValue));
+      await this.page.waitForTimeout(2000);
       console.log(`Project basic info filled: ID=${projectId}`);
       
     } catch (error) {
@@ -143,13 +143,27 @@ await this.projectDescription.fill(projectData.description);
       console.log('Navigating additional tabs...');
       
       // Access More menu
+      await this.page.waitForTimeout(2000);
       await this.moreButton.click();
       
       // Navigate to Deliverables
-      await this.deliverablesTab.click();
+      await this.page.waitForTimeout(2000);
+      const isChecked = await this.deliverablesTab.getAttribute('checked');
+        if (isChecked !== null) {
+          console.log('✅ The <a> tag is checked.');
+       } else {
+          await this.deliverablesTab.click();
+       }
       
       // Navigate to Gov't Contract
-      await this.govtContractTab.click();
+      await this.page.waitForTimeout(2000);
+        const isChecked2 = await this.govtContractTab.getAttribute('checked');
+        if (isChecked2 !== null) {
+          console.log('✅ The <a> tag is checked.');
+       } else {
+          await this.govtContractTab.click();
+       }
+     
       
       // Close overlay
       await this.curtainOverlay.click();
@@ -170,21 +184,35 @@ await this.projectDescription.fill(projectData.description);
       console.log('Configuring user-defined info...');
       
       // Navigate to User-Defined Info tab
+      await this.page.waitForTimeout(1000);
       await this.userDefinedInfoTab.click();
       
       // Click New button
+      await this.page.waitForTimeout(1000);
       await this.newButton.click();
       
       // Click lookup icon
+      await this.page.waitForTimeout(1000);
       await this.lookupIcon.click();
       
       // Select label
+      await this.page.waitForTimeout(2000);
       await this.udefLabel.click();
+      await this.page.waitForTimeout(2000);
       await this.selectButton.click();
       
       // Configure tracking
-      await this.track1.click();
-      await this.mainFormArea.dblclick();
+      // await this.page.waitForTimeout(1000);
+      // await this.track1.click();
+      // await this.page.waitForTimeout(1000);
+      // await this.mainFormArea.dblclick();
+      await this.page.waitForTimeout(2000);
+      await this.textValue.hover();
+      await this.textValue.click();
+      await this.page.waitForTimeout(1000);
+      await this.lookupIcon.click();
+      await this.page.waitForTimeout(1000);
+      await this.selectButton.click();
       
       console.log('User-defined info configured');
       
@@ -202,14 +230,18 @@ await this.projectDescription.fill(projectData.description);
       console.log('Handling project levels...');
       
       // Navigate to Proj Levels tab
+      await this.page.waitForTimeout(1000);
       await this.navigateToTab(this.projLevelsTab);
       
       // Set up dialog handler using enhanced method
-      await this.handleDialog();
+      // await this.page.waitForTimeout(1000);
+      // await this.handleDialog();
       
       // Click Load Data button
-      await this.loadDataButton.click();
-      
+     //s await this.page.waitForTimeout(1000);
+      await this.loadDataButton.waitFor({ state: 'visible' });
+      await this.loadDataButton.focus();
+      await this.loadDataButton.click({ force: true });
       console.log('Project levels handled');
       
     } catch (error) {
@@ -247,6 +279,7 @@ await this.projectDescription.fill(projectData.description);
     try {
       console.log('Saving project...');
       
+      await this.saveButton.waitFor({ state: 'visible'});
       await this.saveButton.click();
       
       // Wait for save to complete

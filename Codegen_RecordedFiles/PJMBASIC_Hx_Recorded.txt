@@ -39,7 +39,7 @@ test('test', async ({ page }) => {
   await page.locator('a').filter({ hasText: 'Gov\'t Contract' }).click();
   await page.locator('curtain-overlay').click();
   await page.getByText('User-Defined Info').click();
-  await page.locator('[id="1"]').getByText('New', { exact: true }).click();
+  #await page.locator('[id="1"]').getByText('New', { exact: true }).click();
   await page.locator('#lookup_icon').click();
   await page.locator('#UDEF_LBL-_0_E').click();
   await page.getByRole('button', { name: 'Select' }).click();

@@ -1,4 +1,0 @@
-searching the app
-PJMBASIC page loaded successfully
-All page elements validated successfully
-Filling basic project information...
