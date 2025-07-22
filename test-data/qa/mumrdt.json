@@ -1,0 +1,28 @@
+{
+  "searchCriteria": {
+    "exchangeRateType": "DAILY1",
+    "fromCurrency": "GBP",
+    "toCurrency": "USD"
+  },
+  "exchangeRateData": {
+    "startDate": "{{dynamicDate:0}}",
+    "endDate": "{{dynamicDate:1}}",
+    "rate": "12"
+  },
+  "dynamicDateConfig": {
+    "useDynamicDates": true,
+    "baseDate": "current",
+    "dateFormat": "MM/DD/YYYY"
+  },
+  "validationData": {
+    "expectedSuccessMessage": "Record modifications successfully completed.",
+    "expectedPageTitle": "Manage Exchange Rates by Date"
+  },
+  "testSettings": {
+    "retryCount": 3,
+    "timeout": 30000,
+    "screenshotOnFailure": true,
+    "waitTimeAfterAction": 2000,
+    "maintainTableStructure": true
+  }
+}

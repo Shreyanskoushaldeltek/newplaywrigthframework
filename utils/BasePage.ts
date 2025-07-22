@@ -228,4 +228,27 @@ export default class BasePage {
     });
   }
 
+  /** Generate formatted date string for Costpoint applications */
+  formatDateForCostpoint(daysFromToday: number = 0): string {
+    const date = new Date();
+    date.setDate(date.getDate() + daysFromToday);
+    
+    const month = (date.getMonth() + 1).toString().padStart(2, '0');
+    const day = date.getDate().toString().padStart(2, '0');
+    const year = date.getFullYear();
+    
+    return `${month}/${day}/${year}`;
+  }
+
+  /** Enhanced field interaction for Costpoint with proper timing */
+  async fillCostpointField(selector: string | Locator, value: string, waitTime: number = 1000): Promise<void> {
+    const element = typeof selector === 'string' ? this.page.locator(selector) : selector;
+    
+    await element.waitFor({ state: 'visible' });
+    await element.click();
+    await this.page.waitForTimeout(500); // Brief pause for field focus
+    await element.fill(value);
+    await this.page.waitForTimeout(waitTime); // Wait for Costpoint to process
+  }
+
 }
