@@ -1,0 +1,25 @@
+{
+  "basicInfo": {
+    "projectId": "BTL1.BR2.{{random}}",
+    "projectName": "NewProjectName_{{random}}",
+    "projectAbbreviation": "{{random}}"
+  },
+  "projectSettings": {
+    "projectType": "Expense Project",
+    "expectedProjectDisplay": "DIRECT Project",
+    "billProject": false,
+    "allowCharges": true,
+    "expectedAccountGroup": "T&E",
+    "expectedOrganization": "P.ORG1"
+  },
+  "notes": "New Project Notes for automation testing.",
+  "validationData": {
+    "expectedPageTitle": "PJMBASIC",
+    "expectedSuccessMessage": "Project created successfully"
+  },
+  "testSettings": {
+    "retryCount": 3,
+    "timeout": 30000,
+    "screenshotOnFailure": true
+  }
+}

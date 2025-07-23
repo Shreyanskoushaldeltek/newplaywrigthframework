@@ -10,5 +10,5 @@
     "rootDir": ".",
     "types": ["node"]
   },
-  "include": ["tests/**/*.ts", "steps/**/*.ts", "pages/**/*.ts"]
+  "include": ["tests/**/*.ts", "steps/**/*.ts", "pages/**/*.ts", "pages/homepage.js", "pages/homepage.js", "pages/pdmpart.js", "pages/loginpage.js"]
 }

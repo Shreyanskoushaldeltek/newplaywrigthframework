@@ -1,31 +1,60 @@
-// Inlcude playwright module
-const { expect } = require('@playwright/test')
+// // Inlcude playwright module
 
-// create class
-exports.HomePage = class HomePage {
+// const { expect } = require('@playwright/test')
+// import { Page } from '@playwright/test';
+// import BasePage from '../utils/BasePage';
+// // create class
+// export class HomePage extends BasePage{
+//     searchTextbox: any;
+//     Notification: any;
+//     MaybeLater: any;
+//     ImproveUserExperience: any;
+//     Search: any;
 
-    /**
-     * 
-     * @param {import ('@playwright/test').Page} page 
-     */
-    constructor(page){
+//     /**
+//      * 
+//      * @param {import ('@playwright/test').Page} page 
+ //   constructor(page: Page){
         // Init page object
-        this.page = page;
 
-        // Elements
+const { expect } = require('@playwright/test');
+import BasePage from '../utils/BasePage';
+
+export class HomePage extends BasePage {
+  constructor(page) {
+    super(page);
+
+    // Page instance
+    this.page = page;
+        // Elements//
         this.searchTextbox = page.locator('#APjFqb');
+        this.Notification = page.locator("//div[text()='Allow Notifications?']");
+        this.MaybeLater = page.locator("#pdlgNo");
+        this.ImproveUserExperience = page.locator("//div[text()='Improve User Experience']");
+        this.Search = page.locator("//input[@id='appFltrFld']");
     }
 
-    async goto(){
-        await this.page.setViewportSize({width:1366, height:728})
-        await this.page.goto(process.env.URL);
+    async ManageNotification(){
+           await this.Notification.waitFor({ state: 'visible' });
+           await this.MaybeLater.click();
+           try{
+                await this.ImproveUserExperience.waitFor({ state: 'visible' , timeout: 5000});
+                await this.MaybeLater.click();
+           }
+           catch(error){
+              //  console.log((error as Error).message);
+              console.log(error)
+           }
     }
 
+    //async searchKeywords(param1: string){
     async searchKeywords(param1){
-        await expect(this.searchTextbox).toBeEnabled();
-        await this.searchTextbox.click();
-        await this.searchTextbox.fill(param1);
-        await this.searchTextbox.press('Enter');
+        console.log("searching the app")
+        await this.Search.click();
+        await this.Search.fill(param1);
+        const locator = await this.getDynamicXPathLocator(param1);
+        await locator.click();
     }
 
 }
+module.exports = { HomePage };
