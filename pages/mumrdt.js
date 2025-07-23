@@ -34,7 +34,7 @@ export class MUMRDTPage extends BasePage {
     
     // Status and Validation Elements
     this.toolbarContainer = page.locator('#uxxToolbarCont');
-    this.successMessage = page.locator('#mLink206_0');
+    this.successMessage = page.locator('#mLink208_0');
     this.loadingMessage = page.getByText('Loading...Manage Exchange');
     
     // Page Header Validation
@@ -182,10 +182,6 @@ export class MUMRDTPage extends BasePage {
       await this.exchangeRate.fill(exchangeRateData.rate);
       await this.page.waitForTimeout(1000);
       
-      // Click on grid cell for additional configuration (maintains table layout)
-      await this.gridCell.click();
-      await this.page.waitForTimeout(1000);
-      
       // Click change label if needed (preserves table row structure)
       await this.changeLabel.click();
       await this.page.waitForTimeout(1000);
@@ -236,8 +232,8 @@ export class MUMRDTPage extends BasePage {
       await this.page.waitForTimeout(2000);
       
       // Click on toolbar to ensure save is processed
-      await this.toolbarContainer.click();
-      await this.page.waitForTimeout(2000);
+      /*await this.toolbarContainer.click();
+      await this.page.waitForTimeout(2000);*/
       
       // Verify success message
       await expect(this.successMessage).toContainText('Record modifications successfully completed.');

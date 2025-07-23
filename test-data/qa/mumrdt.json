@@ -5,9 +5,9 @@
     "toCurrency": "USD"
   },
   "exchangeRateData": {
-    "startDate": "{{dynamicDate:0}}",
-    "endDate": "{{dynamicDate:1}}",
-    "rate": "12"
+    "startDate": "{{dynamicDate:1}}",
+    "endDate": "{{dynamicDate:2}}",
+    "rate": "0.8"
   },
   "dynamicDateConfig": {
     "useDynamicDates": true,

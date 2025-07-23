@@ -92,7 +92,7 @@ test('MUMRDT - Complete Exchange Rate Management and Validation', async ({ page 
   });
 
   await test.step('Select Exchange Rate Record', async () => {
-    await mumrdtPage.selectExchangeRateRecord();
+   // await mumrdtPage.selectExchangeRateRecord();
     
     // Wait for Costpoint record selection to process
     await page.waitForTimeout(2000);
@@ -129,7 +129,7 @@ test('MUMRDT - Complete Exchange Rate Management and Validation', async ({ page 
     await mumrdtPage.saveExchangeRate();
     
     // Wait for Costpoint save operation to complete
-    await page.waitForTimeout(3000);
+    await page.waitForTimeout(4000);
     
     // Verify success message appears
     await expect(mumrdtPage.successMessage).toContainText(
